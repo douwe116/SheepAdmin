@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: 'jdbc:postgresql://192.168.178.185:5432/appsmith'
+    username: postgres
+    password: Ih10hawei
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+      show-sql: true
+      default_schema: farming
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://vissersuwald.eu.auth0.com/
+auth0:
+  audience: http://localhost:8080/api/sheep/
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+server:
+  ssl:
+    key-store: /etc/letsencrypt/live/backend.vissersuwald.nl/keystore.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: tomcat
+  port: 8443
