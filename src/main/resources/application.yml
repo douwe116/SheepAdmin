@@ -17,20 +17,30 @@ spring:
         format_sql: true
   security:
     oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://vissersuwald.eu.auth0.com/
-auth0:
-  audience: http://localhost:8080/api/sheep/
+      client:
+        registration:
+          auth0:
+            client-id: QE7DXewpVO82rN331vhJD42qDVkVE1mT
+            client-secret: CkOus7xto0EUVA4orwR_XSO_Rye6HdRIr5-G41Vmxhf2ovq2CNsJ3BkW_h9JRcEW
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: https://vissersuwald.eu.auth0.com/
+server:
+  port: 8443
+  ssl:
+    key-store: /etc/letsencrypt/live/backend.vissersuwald.nl/keystore.p12
+    key-sore-password: Ih17j-konijnen
+    keyStoreType: pkcs12
+    keyAlias: tomcat
+security:
+  require-ssl: true
 logging:
   level:
     org:
       hibernate:
         SQL: DEBUG
-server:
-  ssl:
-    key-store: /etc/letsencrypt/live/backend.vissersuwald.nl/keystore.p12
-    key-store-password: password
-    key-store-type: pkcs12
-    key-alias: tomcat
-  port: 8443
