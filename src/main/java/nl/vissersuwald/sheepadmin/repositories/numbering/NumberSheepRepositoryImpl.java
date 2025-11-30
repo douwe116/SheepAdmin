@@ -1,11 +1,11 @@
 package nl.vissersuwald.sheepadmin.repositories.numbering;
 
-import nl.vissersuwald.sheepadmin.models.farming.ActiveParameters;
+import nl.vissersuwald.sheepadmin.models.farming.Parameter;
 import nl.vissersuwald.sheepadmin.models.farming.Birth;
 import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.models.numbering.NewNumber;
 import nl.vissersuwald.sheepadmin.models.numbering.NumberSheep;
-import nl.vissersuwald.sheepadmin.repositories.SheepRepository;
+import nl.vissersuwald.sheepadmin.repositories.farming.SheepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -51,7 +51,7 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
             sheep.setGender(newNumber.getGender());
             sheep.setName(newNumber.getNumber());
             sheep.setDateOfBirth(birth.getDateOfBirth());
-            sheep.setMotherId(birth.getMotherId());
+            //sheep.setMotherId(birth.getMotherId());
             //sheep.setYearOfBirth(birth.getYearOfBirth());
 
             // Save to the database
@@ -66,22 +66,22 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public List<ActiveParameters> findAll() {
+    public List<Parameter> findAll() {
         return null;
     }
 
     @Override
-    public List<ActiveParameters> findAll(Sort sort) {
+    public List<Parameter> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<ActiveParameters> findAll(Pageable pageable) {
+    public Page<Parameter> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public List<ActiveParameters> findAllById(Iterable<Long> longs) {
+    public List<Parameter> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -96,7 +96,7 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public void delete(ActiveParameters entity) {
+    public void delete(Parameter entity) {
 
     }
 
@@ -106,7 +106,7 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public void deleteAll(Iterable<? extends ActiveParameters> entities) {
+    public void deleteAll(Iterable<? extends Parameter> entities) {
 
     }
 
@@ -116,17 +116,17 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public <S extends ActiveParameters> S save(S entity) {
+    public <S extends Parameter> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Parameter> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<ActiveParameters> findById(Long aLong) {
+    public Optional<Parameter> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -141,17 +141,17 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public <S extends ActiveParameters> S saveAndFlush(S entity) {
+    public <S extends Parameter> S saveAndFlush(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends Parameter> List<S> saveAllAndFlush(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<ActiveParameters> entities) {
+    public void deleteAllInBatch(Iterable<Parameter> entities) {
 
     }
 
@@ -166,52 +166,52 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
     }
 
     @Override
-    public ActiveParameters getOne(Long aLong) {
+    public Parameter getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public ActiveParameters getById(Long aLong) {
+    public Parameter getById(Long aLong) {
         return null;
     }
 
     @Override
-    public ActiveParameters getReferenceById(Long aLong) {
+    public Parameter getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> Optional<S> findOne(Example<S> example) {
+    public <S extends Parameter> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends ActiveParameters> List<S> findAll(Example<S> example) {
+    public <S extends Parameter> List<S> findAll(Example<S> example) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends Parameter> List<S> findAll(Example<S> example, Sort sort) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends Parameter> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends ActiveParameters> long count(Example<S> example) {
+    public <S extends Parameter> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends ActiveParameters> boolean exists(Example<S> example) {
+    public <S extends Parameter> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends ActiveParameters, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends Parameter, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 }

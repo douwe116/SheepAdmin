@@ -1,11 +1,12 @@
 package nl.vissersuwald.sheepadmin.repositories;
 
+import nl.vissersuwald.sheepadmin.logic.SheepTestLogic;
 import nl.vissersuwald.sheepadmin.models.farming.Sheep;
+import nl.vissersuwald.sheepadmin.repositories.farming.SheepRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

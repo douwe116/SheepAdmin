@@ -2,6 +2,7 @@ package nl.vissersuwald.sheepadmin.models.farming;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="sheep", schema="farming")
@@ -35,6 +36,8 @@ public class Sheep {
     protected String comments;
     @Column(name = "gender")
     protected String gender;
+    @OneToMany(mappedBy = "mother")
+    private List<Birth> births;
 
     public Sheep() {
     }

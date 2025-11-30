@@ -1,8 +1,7 @@
 package nl.vissersuwald.sheepadmin.controllers;
 
 import nl.vissersuwald.sheepadmin.models.farming.Birth;
-import nl.vissersuwald.sheepadmin.repositories.BirthRepository;
-import org.springframework.beans.BeanUtils;
+import nl.vissersuwald.sheepadmin.repositories.farming.BirthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,8 @@ public class BirthController {
     @GetMapping
     @RequestMapping("{id}")
     public Birth get(@PathVariable Long id) {
-        return birthRepository.getReferenceById(id);
+        //return birthRepository.getReferenceById(id);
+        return null;
     }
 
     @PostMapping
@@ -36,8 +36,9 @@ public class BirthController {
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Birth update(@PathVariable Long id, @RequestBody Birth birth) {
-        Birth existingBirth = birthRepository.getReferenceById(id);
-        BeanUtils.copyProperties(birth, existingBirth, "id");
-        return birthRepository.saveAndFlush((existingBirth));
+        //Birth existingBirth = birthRepository.getReferenceById(id);
+        //BeanUtils.copyProperties(birth, existingBirth, "id");
+        //return birthRepository.saveAndFlush((existingBirth));
+        return null;
     }
 }

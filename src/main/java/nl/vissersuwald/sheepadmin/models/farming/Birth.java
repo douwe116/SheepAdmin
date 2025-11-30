@@ -6,11 +6,12 @@ import java.util.Date;
 @Entity
 @Table(name="births", schema="farming")
 public class Birth {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "yearofbirth")
-    private Long yearOfBirth;
+    @EmbeddedId
+    private BirthId id;
+    @MapsId("motherId")
+    @ManyToOne
+    @JoinColumn(name = "motherId", insertable = false, updatable = false)
+    private Sheep mother;
     @Column(name = "dateofbirth")
     private Date dateOfBirth;
     @Column(name = "ewes")
@@ -33,26 +34,18 @@ public class Birth {
     private Long infantMortality;
     @Column(name = "status")
     private String status;
-    @Column(name = "motherid")
-    private Long motherId;
 
-    public Birth() {
+    public Birth(Sheep mother, int yearOfBirth) {
+        this.mother = mother;
+        this.id = new BirthId(mother.getId(), yearOfBirth);
     }
 
-    public Long getId() {
+    public BirthId getBirthId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getYearOfBirth() {
-        return yearOfBirth;
-    }
-
-    public void setYearOfBirth(Long yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+    public void setBirthId(BirthId birthId) {
+        this.id = birthId;
     }
 
     public Date getDateOfBirth() {
@@ -141,13 +134,5 @@ public class Birth {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Long getMotherId() {
-        return motherId;
-    }
-
-    public void setMotherId(Long motherId) {
-        this.motherId = motherId;
     }
 }
