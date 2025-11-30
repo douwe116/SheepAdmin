@@ -1,8 +1,8 @@
 package nl.vissersuwald.sheepadmin.repositories.numbering;
 
-import nl.vissersuwald.sheepadmin.models.ActiveParameters;
-import nl.vissersuwald.sheepadmin.models.Birth;
-import nl.vissersuwald.sheepadmin.models.Sheep;
+import nl.vissersuwald.sheepadmin.models.farming.ActiveParameters;
+import nl.vissersuwald.sheepadmin.models.farming.Birth;
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.models.numbering.NewNumber;
 import nl.vissersuwald.sheepadmin.models.numbering.NumberSheep;
 import nl.vissersuwald.sheepadmin.repositories.SheepRepository;
@@ -52,7 +52,7 @@ class NumberSheepRepositoryImpl implements NumberSheepRepository{
             sheep.setName(newNumber.getNumber());
             sheep.setDateOfBirth(birth.getDateOfBirth());
             sheep.setMotherId(birth.getMotherId());
-            sheep.setYearOfBirth(birth.getYearOfBirth());
+            //sheep.setYearOfBirth(birth.getYearOfBirth());
 
             // Save to the database
             sheep = sheepRepository.saveAndFlush(sheep);

@@ -1,7 +1,7 @@
 package nl.vissersuwald.sheepadmin.repositories.numbering;
 
-import nl.vissersuwald.sheepadmin.models.ActiveParameters;
-import nl.vissersuwald.sheepadmin.models.Sheep;
+import nl.vissersuwald.sheepadmin.models.farming.ActiveParameters;
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.models.numbering.NumberSheep;
 import org.springframework.data.jpa.repository.JpaRepository;
 

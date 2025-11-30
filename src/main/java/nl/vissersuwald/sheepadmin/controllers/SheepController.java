@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.controllers;
 
-import nl.vissersuwald.sheepadmin.models.Sheep;
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.repositories.SheepRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

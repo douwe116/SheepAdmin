@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: 'jdbc:postgresql://192.168.178.185:5432/appsmith'
-    username: postgres
-    password: Ih10hawei
+    url: 'jdbc:postgresql://192.168.50.91:5432/vissersuwald'
+    username: dvisser
+    password: Ih17j-konijnen
   jackson:
     serialization:
       fail-on-empty-beans: false

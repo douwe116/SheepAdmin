@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.models;
 
-import org.hibernate.annotations.Formula;
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,8 +1,9 @@
 package nl.vissersuwald.sheepadmin.models;
 
 
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
+
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.controllers;
 
-import nl.vissersuwald.sheepadmin.models.ActiveParameters;
+import nl.vissersuwald.sheepadmin.models.farming.ActiveParameters;
 import nl.vissersuwald.sheepadmin.repositories.ActiveParametersRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.controllers;
 
-import nl.vissersuwald.sheepadmin.models.FosterReference;
+import nl.vissersuwald.sheepadmin.models.farming.FosterReference;
 import nl.vissersuwald.sheepadmin.repositories.FosterReferenceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

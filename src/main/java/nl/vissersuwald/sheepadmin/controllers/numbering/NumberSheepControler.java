@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.controllers.numbering;
 
-import nl.vissersuwald.sheepadmin.models.Sheep;
+import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.models.numbering.NumberSheep;
 import nl.vissersuwald.sheepadmin.repositories.numbering.NumberSheepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
