@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.models.numbering;
 
-import javax.persistence.Id;
+import jakarta.persistence.*;
 import java.util.List;
 
 public class NumberSheep {

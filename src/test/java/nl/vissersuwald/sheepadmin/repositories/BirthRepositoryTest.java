@@ -39,7 +39,7 @@ class BirthRepositoryTest {
 
         assertTrue(found.isPresent());
         assertThat(found.get().getBirthId().getMotherId()).isEqualTo(savedMother.getId());
-        assertThat(found.get().getBirthId().getYearOfBirth()).isEqualTo(dateOfBirth.getYear());
+        assertThat(found.get().getBirthId().getYearOfBirth()).isEqualTo(dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).getYear());
         assertThat(found.get().getEwes()).isEqualTo(1L);
         assertThat(found.get().getRams()).isEqualTo(2L);
     }
@@ -49,24 +49,23 @@ class BirthRepositoryTest {
         Date dateOfBirth1 =  new Date(124, 3, 31);
         Date dateOfBirth2 =  new Date(125, 3, 31);
         Sheep mother = SheepTestLogic.createNewSheep("mother");
-        Sheep savedMother = sheepRepository.save(mother);
+        Sheep savedMother = sheepRepository.saveAndFlush(mother);
 
         Birth birth1 = SheepTestLogic.createNewBirth(savedMother,dateOfBirth1,1L,2L);
         Birth birth2 = SheepTestLogic.createNewBirth(savedMother,dateOfBirth2,2L,null);
-        birthRepository.save(birth1);
-        birthRepository.save(birth2);
+        birthRepository.saveAll(List.of(birth1,birth2));
 
         List<Birth> births1 = birthRepository.findByMother(savedMother);
 
         assertThat(births1.size()).isEqualTo(2);
-        assertThat(births1.stream().map(b -> b.getDateOfBirth()).toList())
-                .containsExactlyElementsOf(List.of(dateOfBirth1, dateOfBirth2));
+        assertThat(births1.stream().map(b -> SheepTestLogic.toLocalDate(b.getDateOfBirth())).toList())
+                .containsExactlyElementsOf(List.of(SheepTestLogic.toLocalDate(dateOfBirth1), SheepTestLogic.toLocalDate(dateOfBirth2)));
 
         List<Birth> births2 = birthRepository.findById_YearOfBirth(2025);
 
         assertThat(births2.size()).isEqualTo(1);
-        assertThat(births2.stream().map(b -> b.getDateOfBirth()).toList())
-                .containsExactlyElementsOf(List.of(dateOfBirth2));
+        assertThat(births2.stream().map(b -> SheepTestLogic.toLocalDate(b.getDateOfBirth())).toList())
+                .containsExactlyElementsOf(List.of(SheepTestLogic.toLocalDate(dateOfBirth2)));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package nl.vissersuwald.sheepadmin.models.farming;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
@@ -8,9 +9,8 @@ import java.util.Date;
 public class Birth {
     @EmbeddedId
     private BirthId id;
-    @MapsId("motherId")
-    @ManyToOne
-    @JoinColumn(name = "motherId", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "motherId", referencedColumnName = "id", insertable = false, updatable = false)
     private Sheep mother;
     @Column(name = "dateofbirth")
     private Date dateOfBirth;
@@ -34,6 +34,8 @@ public class Birth {
     private Long infantMortality;
     @Column(name = "status")
     private String status;
+
+    public Birth() {}
 
     public Birth(Sheep mother, int yearOfBirth) {
         this.mother = mother;

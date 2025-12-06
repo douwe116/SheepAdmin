@@ -1,38 +1,43 @@
 package nl.vissersuwald.sheepadmin.controllers;
 
-import nl.vissersuwald.sheepadmin.controllers.SheepController;
 import nl.vissersuwald.sheepadmin.logic.SheepTestLogic;
 import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import nl.vissersuwald.sheepadmin.repositories.farming.SheepRepository;
+import nl.vissersuwald.sheepadmin.services.JwtAuthFilter;
+import nl.vissersuwald.sheepadmin.services.JwtService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(SheepController.class)
+@AutoConfigureMockMvc(addFilters = false)   // ⬅ disable security filters
 class SheepControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @Autowired private MockMvc mockMvc;
 
-    @MockBean
-    private SheepRepository sheepRepository;
+    @MockBean private JwtAuthFilter jwtAuthFilter;
+    @MockBean private JwtService jwtService;
+    @MockBean private UserDetailsService userDetailsService;
+    @MockBean private SheepRepository sheepRepository;
 
     private Sheep sampleSheep() {
-        Sheep s = SheepTestLogic.createNewSheep("Dolly");
-        return s;
+        Sheep sheep = SheepTestLogic.createNewSheep("Dolly");
+        return sheep;
     }
 
     @Test
@@ -41,7 +46,9 @@ class SheepControllerTest {
                 Arrays.asList(sampleSheep())
         );
 
-        mockMvc.perform(get("/api/sheep"))
+        mockMvc.perform(
+                get("/api/sheep"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name", is("Dolly")));
     }

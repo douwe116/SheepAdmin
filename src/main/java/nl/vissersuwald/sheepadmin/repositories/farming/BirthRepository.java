@@ -5,7 +5,7 @@ import nl.vissersuwald.sheepadmin.models.farming.BirthId;
 import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EmbeddedId;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Optional;
 

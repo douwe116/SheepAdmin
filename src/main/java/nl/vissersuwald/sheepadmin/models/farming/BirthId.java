@@ -1,14 +1,15 @@
 package nl.vissersuwald.sheepadmin.models.farming;
 
-import javax.persistence.Column;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
+@Embeddable
 public class BirthId implements Serializable {
 
-    @Column(name = "motherId")
+    @Column(name = "motherId", nullable = false)
     private Long motherId;
 
-    @Column(name = "yearOfBirth")
+    @Column(name = "yearOfBirth", nullable = false)
     private int yearOfBirth;
 
     public BirthId() {}

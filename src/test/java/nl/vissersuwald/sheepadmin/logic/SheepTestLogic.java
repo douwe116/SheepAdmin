@@ -3,6 +3,7 @@ package nl.vissersuwald.sheepadmin.logic;
 import nl.vissersuwald.sheepadmin.models.farming.Birth;
 import nl.vissersuwald.sheepadmin.models.farming.Sheep;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -25,9 +26,12 @@ public class SheepTestLogic {
     public static Birth createNewBirth(Sheep mother, Date dateOfBirth, Long ewes, Long rams) {
         Birth birth = new Birth(mother, dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).getYear());
         birth.setDateOfBirth(dateOfBirth);
-        birth.setEwes(1L);
-        birth.setRams(2L);
+        birth.setEwes(ewes);
+        birth.setRams(rams);
         return birth;
     }
 
+    public static LocalDate toLocalDate(Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 }

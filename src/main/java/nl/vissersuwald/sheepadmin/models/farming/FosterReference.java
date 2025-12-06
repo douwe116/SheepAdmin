@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.models.farming;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "fosterreference", schema = "farming")

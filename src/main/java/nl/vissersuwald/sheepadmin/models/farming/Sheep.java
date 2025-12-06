@@ -1,6 +1,6 @@
 package nl.vissersuwald.sheepadmin.models.farming;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -152,6 +152,14 @@ public class Sheep {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public List<Birth> getBirths() {
+        return births;
+    }
+
+    public void setBirths(List<Birth> births) {
+        this.births = births;
     }
 }
 
